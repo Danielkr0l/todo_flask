@@ -1,0 +1,21 @@
+{% extends "base_tasks.html" %}
+{% block title %}Tasks{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <h1>All tasks</h1>
+</div>
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      {% for task in tasks %}
+        <div class="task-container">
+          <h3>{{ task.task.title }}</h3>
+          <p>{{ task.task.description }}</p>
+          <p>Deadline: {{ task.task.deadline.strftime('%Y-%m-%d') }}</p>
+          <p>User email: {{task.user_email}}</p>
+          <a href="/deleteTask/{{ task.task.id }}" class="btn btn-danger">Delete</a>
+          <a href="/editTask/{{ task.task.id }}" class="btn btn-primary">Edit</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
